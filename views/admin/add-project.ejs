@@ -1,0 +1,126 @@
+<%- include('../includes/head.ejs') %>
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/admin.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+</head>
+
+<body>  
+    <header class="masthead">
+          <!-- Page Wrapper -->
+    <div id="wrapper">
+
+ <%- include('../includes/navigation-admin.ejs') %>
+  
+    <!-- End of Page Wrapper -->
+       
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <br><br>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Quản lý dự án</h1>
+        <br>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Thêm dự án</h6>
+            </div>
+            <div class="card-body">
+                <div class="col-md-7 col-lg-12">
+                    <form class="needs-validation">
+                      <div class="row g-3">
+
+                        <div class="col-12">
+                            <label for="projectName" class="form-label">Tên dự án</label>
+                            <input type="text" class="form-control" id="projectName" placeholder="" required autofocus>
+                            <div class="invalid-feedback">
+                              Please enter your shipping address.
+                            </div>
+                          </div>
+
+                        <div class="col-sm-6">
+                          <label for="startTime" class="form-label">Ngày bắt đầu</label>
+                          <input type="text" class="form-control" id="startTime" placeholder="" value="" required>
+                          <div class="invalid-feedback">
+                            Valid first name is required.
+                          </div>
+                        </div>
+            
+                        <div class="col-sm-6">
+                          <label for="lastName" class="form-label">Ngày kết thúc</label>
+                          <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                          <div class="invalid-feedback">
+                            Valid last name is required.
+                          </div>
+                        </div>
+            
+            
+                        <div class="col-12">
+                          <label for="money" class="form-label">Số tiền quyên góp </label>
+                          <input type="text" class="form-control" id="money" placeholder="">
+                          <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                          </div>
+                        </div>
+            
+                        <div class="col-12">
+                          <label for="image" class="form-label">Ảnh dự án</label>
+                          <input type="file" class="form-control" id="image" placeholder="" required>
+                          <div class="invalid-feedback">
+                            Please enter your shipping address.
+                          </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="description" class="form-label">Mô tả</label>
+                            <div id="summernote"></div>
+                            <div class="invalid-feedback">
+                              Please enter your shipping address.
+                            </div>
+                          </div>
+              
+                      <hr class="my-3">
+            
+                      <button class="w-100 btn btn-primary btn-lg" type="submit">Tạo dự án mới</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+        <script>
+          $('#summernote').summernote({
+        placeholder: 'Nhập mô tả',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+        </script>
+        
+    </div>
+    <!-- /.container-fluid -->
+
+    </div>
+<!-- End of Main Content -->
+
+    </header>
+    
+<%- include('../includes/javascript.ejs') %>
+<%- include('../includes/end.ejs') %>
+
