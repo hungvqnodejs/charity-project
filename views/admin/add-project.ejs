@@ -40,7 +40,7 @@
 
                         <div class="col-12">
                             <label for="projectName" class="form-label">Tên dự án</label>
-                            <input type="text" class="form-control" id="projectName" placeholder="" required autofocus>
+                            <input type="text" class="form-control clear" id="projectName" placeholder="" required autofocus>
                             <div class="invalid-feedback">
                               Please enter your shipping address.
                             </div>
@@ -48,7 +48,7 @@
 
                         <div class="col-sm-6">
                           <label for="startTime" class="form-label">Ngày bắt đầu</label>
-                          <input type="text" class="form-control" id="startTime" placeholder="" value="" required>
+                          <input type="text" class="form-control clear" id="startTime" placeholder="" value="" required>
                           <div class="invalid-feedback">
                             Valid first name is required.
                           </div>
@@ -56,7 +56,7 @@
             
                         <div class="col-sm-6">
                           <label for="lastName" class="form-label">Ngày kết thúc</label>
-                          <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                          <input type="text" class="form-control clear" id="lastName" placeholder="" value="" required>
                           <div class="invalid-feedback">
                             Valid last name is required.
                           </div>
@@ -65,7 +65,7 @@
             
                         <div class="col-12">
                           <label for="money" class="form-label">Số tiền quyên góp </label>
-                          <input type="text" class="form-control" id="money" placeholder="">
+                          <input type="text" class="form-control clear" id="money" placeholder="">
                           <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                           </div>
@@ -73,7 +73,7 @@
             
                         <div class="col-12">
                           <label for="image" class="form-label">Ảnh dự án</label>
-                          <input type="file" class="form-control" id="image" placeholder="" required>
+                          <input type="file" class="form-control clear" id="image" placeholder="" required>
                           <div class="invalid-feedback">
                             Please enter your shipping address.
                           </div>
@@ -81,13 +81,15 @@
 
                         <div class="col-12">
                             <label for="description" class="form-label">Mô tả</label>
-                            <div id="summernote"></div>
+                            <input id="summernote" class="clear"></input>
                             <div class="invalid-feedback">
                               Please enter your shipping address.
                             </div>
                           </div>
               
-                      <hr class="my-3">
+                          <div class="text-center">
+                            <a type="button" class="small" id="btnrs">Xóa tất cà trường</a>
+                        </div>
             
                       <button class="w-100 btn btn-primary btn-lg" type="submit">Tạo dự án mới</button>
                     </form>
@@ -98,6 +100,7 @@
         
         <script>
           $('#summernote').summernote({
+            
         placeholder: 'Nhập mô tả',
         tabsize: 2,
         height: 120,
@@ -111,6 +114,10 @@
           ['view', ['fullscreen', 'codeview', 'help']]
         ]
       });
+
+      $('#btnrs').click(function(){
+        $('.clear').val('');
+      })
         </script>
         
     </div>

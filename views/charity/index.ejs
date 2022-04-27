@@ -12,215 +12,192 @@
         <link href="/css/styles.css" rel="stylesheet" />
         
     </head>
-    <body id="page-top">
+    <body id="page-top" class="pagetop">
 <%- include('../includes/navigation.ejs') %>       
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">Quỹ từ thiện</h1>
-                        <hr class="divider" />
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">Với thế giới, bạn chỉ là một hạt cát nhỏ – nhưng với một người nào đó, bạn là cả thế giới của họ.</p>
-                        <a class="btn btn-primary btn-xl" href="#about">Tìm Hiểu thêm</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-      <br> <br id="about"><br><br >
-        <!-- About-->
-        <h2 class="text-center mt-0">Giới thiệu</h2>
-            <hr class="divider" />
-        <section class="bg-primary" >
-            
-              <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner ">
-      <div class="carousel-item active vh-95">
-
-        <img src="../img/banner3.png" alt="" class="bd-placeholder-img " width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-
-        <!-- <div class="container">
-          <div class="carousel-caption text-start">
-            <h1 class="text-banner">Example headline.</h1>
-            <p class="text-banner">Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Đăng ký làm thành viên</a></p>
+       
+<section class="page-section about-heading">
+  <div class="container">
+      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="../img/banner2.jpg" alt="..." />
+      <div class="about-heading-content">
+          <div class="row">
+              <div class="col-xl-9 col-lg-10 mx-auto">
+                  <div class="bg-faded rounded p-5">
+                      <h2 class="section-heading mb-4">
+                          <span class="section-heading-upper">Quỹ từ thiện</span>
+                          <span class="section-heading-lower">Non-profit child care</span>
+                      </h2>
+                      <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.</p>
+                      
+                  </div>
+              </div>
           </div>
-        </div> -->
       </div>
-      <div class="carousel-item vh-95 ">
-        <img src="../img/banner1.png" alt="" class="bd-placeholder-img " width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-
-        <div class="container">
-          <div class="carousel-caption">
-            <h1 class="text-banner">Another example headline.</h1>
-            <p class="text-banner"> Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#project">Các dự án từ thiện</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item vh-95">
-        <img src="../img/banner2.png" alt="" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1 class="text-banner">One more for good measure.</h1>
-            <p class="text-banner">Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Góp ý cho chúng tôi</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-        </section>
-        <!-- project-->
-        <section class="page-section bg-light" id="project">
-            <div class="container px-4 px-lg-5">
-                <h2 class="text-center mt-0">Các dự án quyên góp</h2>
-                <hr class="divider" />
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <!-- items1 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              
-                          <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <small>100.000.000 VND / 400.000.000 VND</small>
-                            <small class="progress my-2">
-                              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                            </small>
-                            <div class="d-flex justify-content-between align-items-center">     
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Quyên góp</button>
-                                <small class="text-muted">Còn 30 ngày</small>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <!-- items2 -->
-                    <div class="col">
-                        <div class="card shadow-sm">
-                          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              
-                          <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                              </div>
-                              <small class="text-muted">9 mins</small>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- items3 -->
-                      <div class="col">
-                        <div class="card shadow-sm">
-                          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              
-                          <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                              </div>
-                              <small class="text-muted">9 mins</small>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container px-4 px-lg-4">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <h2 class="mt-0">Liên hệ với chúng tôi</h2>
-                        <hr class="divider" />
-                        <p class="text-muted mb-5">Mọi ý kiến đóng góp và giúp đỡ xin được gửi qua đây. Chúng tôi sẽ sớm phản hồi lại !</p>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                    <div class="col-lg-6">
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+</section>
+<!-- about -->
+        <section class="page-section clearfix" id="about">
+          <div class="container">
+              <div class="intro">
+                  <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="../img/banner3.jpg" alt="..." />
+                  <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                      <h2 class="section-heading mb-4">
+                          <span class="section-heading-upper">Mất chút thời gian được cả không gian tình cảm</span>
+                          
+                      </h2>
+                      <p class="mb-3">Sự sẻ chia luôn mang lại nhiều điều kỳ diệu cho cuộc sống. Dù trong bất kỳ hoàn cảnh nào, chúng ta cũng đều có thể chia sẻ và quan tâm đến người khác. Hãy nhớ rằng, khi vui vẻ và hạnh phúc thì ít nhiều bạn cũng đã tạo ra được những tác động tích cực đến những người xung quanh.</p>
+                      <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#project">Các dự án quyên góp</a></div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section class="page-section cta " id="project">
+          <div class="container">
+              <div class="row">          
+                      <div class="cta-inner bg-faded text-center rounded row">
+                        <p class="address mb-5">
+                          <em>
+                              <strong class="site-heading-lower">Các dự án quyên góp</strong>
+                              <br />
+                              Yêu thương và lòng tốt không bao giờ lãng phí.
+                          </em>
+                      </p>
+                          
+                          <!-- items charity -->
+                          <div class="col-12 col-md-4">
+                            <div class="card shadow-sm">
+                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  
+                              <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <small>100.000.000 VND / 400.000.000 VND</small>
+                                <small class="progress my-2">
+                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                </small>
+                                <div class="d-flex justify-content-between align-items-center">     
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Quyên góp</button>
+                                    <small class="text-muted">Còn 30 ngày</small>
                                 </div>
+                              </div>
                             </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                        <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div>+1 (555) 123-4567</div>
+                          </div>
+
+                          <!-- items charity -->
+                          <div class="col-12 col-md-4">
+                            <div class="card shadow-sm">
+                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  
+                              <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <small>100.000.000 VND / 400.000.000 VND</small>
+                                <small class="progress my-2">
+                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                </small>
+                                <div class="d-flex justify-content-between align-items-center">     
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Quyên góp</button>
+                                    <small class="text-muted">Còn 30 ngày</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- items charity -->
+                          <div class="col-12 col-md-4">
+                            <div class="card shadow-sm">
+                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  
+                              <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <small>100.000.000 VND / 400.000.000 VND</small>
+                                <small class="progress my-2">
+                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                </small>
+                                <div class="d-flex justify-content-between align-items-center">     
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Quyên góp</button>
+                                    <small class="text-muted">Còn 30 ngày</small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- contact -->
+      <section class="page-section" id="contact">
+        <div class="container ">
+            <div class="row  ">
+                <div class="col-xl-9 mx-auto opacity-10 cta pt-3 pb-3">
+                    <div class="cta-inner bg-faded text-center rounded">
+                        
+                          <p class="address mb-5">
+                            <em>
+                                <strong class="site-heading-lower">Liên hệ với chúng tôi</strong>
+                                <br />
+                                Mọi ý kiến đóng góp và giúp đỡ xin được gửi qua đây. Chúng tôi sẽ sớm phản hồi lại !
+                            </em>
+                        </p>
+                       
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                          <!-- Name input-->
+                          <div class="form-floating mb-3">
+                              <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                              <label for="name">Tên</label>
+                              <div class="invalid-feedback" data-sb-feedback="name:required">Hãy điền tên của bạn.</div>
+                          </div>
+                          <!-- Email address input-->
+                          <div class="form-floating mb-3">
+                              <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                              <label for="email">Email</label>
+                              <div class="invalid-feedback" data-sb-feedback="email:required">Hãy điền địa chỉ email.</div>
+                              <div class="invalid-feedback" data-sb-feedback="email:email">Địa chỉ email không đúng.</div>
+                          </div>
+                          <!-- Phone number input-->
+                          <div class="form-floating mb-3">
+                              <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                              <label for="phone">Số điện thoại</label>
+                              <div class="invalid-feedback" data-sb-feedback="phone:required">Hãy nhập số điện thoại của bạn.</div>
+                          </div>
+                          <!-- Message input-->
+                          <div class="form-floating mb-3">
+                              <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                              <label for="message">Lời nhắn</label>
+                              <div class="invalid-feedback" data-sb-feedback="message:required">Gửi lời nhắn đến chúng tôi.</div>
+                          </div>
+                          <!-- Submit success message-->
+                          <!---->
+                          <!-- This is what your users will see when the form-->
+                          <!-- has successfully submitted-->
+                          <div class="d-none" id="submitSuccessMessage">
+                              <div class="text-center mb-3">
+                                  <div class="fw-bolder">Form submission successful!</div>         
+                              </div>
+                          </div>
+                          <!-- Submit error message-->
+                          <!---->
+                          <!-- This is what your users will see when there is-->
+                          <!-- an error submitting the form-->
+                          <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                          <!-- Submit Button-->
+                          <div class="d-grid"><button class="btn btn-primary btn-xl disabled mb-2" id="submitButton" type="submit" >Submit</button></div>
+                      </form>
+                       
+                        <p class="mb-0">
+                            <small><em>Gọi cho chúng tôi</em></small>
+                            <br />
+                            (84) 76666 8493
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
         <!-- Footer-->
-        <footer class="bg-light py-4">
-            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Hung vq</div></div>
-        </footer>
+      
+      <footer class="footer text-faded text-center py-4">
+          <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2022</p></div>
+      </footer>
         <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->

@@ -5,3 +5,7 @@ exports.getIndex = async (req, res) => {
 exports.getDetailProject = async (req, res) => {
     res.render("charity/detail-project", { pageTitle: "Dự án"});
 };
+
+exports.getDetailUser = async (req, res) => {
+    res.render("charity/detail-user", { pageTitle: "Thông tin cá nhân"});
+};

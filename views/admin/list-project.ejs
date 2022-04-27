@@ -121,7 +121,7 @@ aria-hidden="true">
 
                     <div class="col-12">
                         <label for="projectName" class="form-label">Tên dự án</label>
-                        <input type="text" class="form-control" id="projectName" placeholder="" required autofocus>
+                        <input type="text" class="form-control clear" id="projectName" placeholder="" required autofocus>
                         <div class="invalid-feedback">
                           Please enter your shipping address.
                         </div>
@@ -129,7 +129,7 @@ aria-hidden="true">
 
                     <div class="col-sm-6">
                       <label for="startTime" class="form-label">Ngày bắt đầu</label>
-                      <input type="text" class="form-control" id="startTime" placeholder="" value="" required>
+                      <input type="text" class="form-control clear" id="startTime" placeholder="" value="" required>
                       <div class="invalid-feedback">
                         Valid first name is required.
                       </div>
@@ -137,7 +137,7 @@ aria-hidden="true">
         
                     <div class="col-sm-6">
                       <label for="lastName" class="form-label">Ngày kết thúc</label>
-                      <input type="text" class="form-control" id="endTime" placeholder="" value="" required>
+                      <input type="text" class="form-control clear" id="endTime" placeholder="" value="" required>
                       <div class="invalid-feedback">
                         Valid last name is required.
                       </div>
@@ -146,7 +146,7 @@ aria-hidden="true">
         
                     <div class="col-12">
                       <label for="money" class="form-label">Số tiền quyên góp </label>
-                      <input type="text" class="form-control" id="money" placeholder="">
+                      <input type="text" class="form-control clear" id="money" placeholder="">
                       <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                       </div>
@@ -154,7 +154,7 @@ aria-hidden="true">
         
                     <div class="col-12">
                       <label for="image" class="form-label">Ảnh dự án</label>
-                      <input type="file" class="form-control" id="image" placeholder="" required>
+                      <input type="file" class="form-control clear" id="image" placeholder="" required>
                       <div class="invalid-feedback">
                         Please enter your shipping address.
                       </div>
@@ -167,8 +167,13 @@ aria-hidden="true">
                           Please enter your shipping address.
                         </div>
                       </div>
-          
+
+                      <div class="text-center">
+                        <a type="button" class="small mb-3" id="btnrs">Xóa tất cà trường</a>
+                        <br>
+                      </div>    
                 </form>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -195,6 +200,10 @@ aria-hidden="true">
       ['view', ['fullscreen', 'codeview', 'help']]
     ]
   });
+
+  $('#btnrs').click(function(){
+        $('.clear').val('');
+      })
     </script>
     
 <%- include('../includes/javascript.ejs') %>

@@ -1,0 +1,148 @@
+<%- include('../includes/head.ejs') %>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" type="text/css">
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top" class="bodyproject">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light shadow py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="/">Trang chủ</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/#about">Giới Thiệu</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#project">Dự án quyên góp</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#contact">Liên hệ</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br>
+        <section class="bg-light container" >
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="container">
+                        <main>                     
+                          <div class="row g-5">
+                            <div class="col-md-5 col-lg-7 order-md-last">
+                              <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                                <span >Lịch sử quyên góp</span>
+                              </h4>
+                                  <div class="table-responsive">
+                                    <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Chương trình</th>
+                                                <th>Ngày </th>
+                                                <th>Số tiền</th>
+                                                <th>Hình thức </th>
+                                        
+                                            </tr>
+                                        </thead>
+                                     
+                                        <tbody>  
+                                            <tr>
+                                                <td><h6 class="my-0">Trái tim cho em</h6>
+                                                    <small class="text-muted">Đang diễn ra</small></td>
+                                                <td>14/4/2022</td>
+                                                <td>$1210</td>
+                                                <td class="verticalAlign">MoMo
+                                                   </td>
+                                            </tr>
+    
+                                            <tr>
+                                                <td><h6 class="my-0">Ủng hộ người nghèo</h6>
+                                                    <small class="text-muted">Đã kết thúc</small></td>
+                                                <td>13/4/2022</td>
+                                                <td>$120.000</td>
+                                                <td class="verticalAlign">ATM
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </ul>
+                      
+                              
+                            </div>
+                            <div class="col-md-7 col-lg-5">
+                              <h4 class="mb-3 mt-3">Thông tin tài khoản</h4>
+                              <form class="needs-validation" novalidate>
+                                <div class="row g-3">
+       
+                                  <div class="col-12">
+                                    <label for="username" class="form-label">Tên người dùng </label>
+                                    <input type="text" class="form-control" id="username" placeholder="Thảo nguyên" disabled>
+                                    <div class="invalid-feedback">
+                                      Hãy nhập tên người dùng
+                                    </div>
+                                  </div>
+    
+                                  <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="beosnguyen@gmail.com" disabled>
+                                    <div class="invalid-feedback">
+                                      Please enter a valid email address for shipping updates.
+                                    </div>
+                                  </div>
+
+                                  <div class="col-12">
+                                    <label for="password" class="form-label">Mật khẩu</label>
+                                    <input type="password" class="form-control" id="password">
+                                    <div class="invalid-feedback">
+                                      Please enter a valid password for shipping updates.
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <a type="button" class="small" id="btnrs">Thay đổi mất khẩu</a>
+                                </div>
+                      
+                                  <div class="col-12">
+                                    <label for="numberphone" class="form-label">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="numberphone" placeholder="0123456789" disabled>
+                                    <div class="invalid-feedback">
+                                      Please enter your shipping address.
+                                    </div>
+                                  </div>
+                      
+                                  <div class="col-12">
+                                    <label for="address" class="form-label">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Hà Nội" disabled>
+                                  </div>
+        
+                              </form>
+                            </div>
+                          </div>
+                        </main>
+                    
+                      </div>
+                </div>
+            </div>        
+        </section>
+          <!-- Footer-->
+      
+      <footer class="footer text-faded text-center py-4">
+        <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2022</p></div>
+    </footer>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<%- include('../includes/end.ejs') %>
