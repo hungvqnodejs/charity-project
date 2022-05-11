@@ -42,85 +42,19 @@
                             </tr>
                         </thead>
                      
-                        <tbody>  
+                        <tbody>
+                            <% if (users.length > 0) { %>
+                                <% for (let user of users) { %>   
                             <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
+                                <td><%= user.userName %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user.numberPhone %></td>
+                                <td style="width: 11%;"><a  href="/admin/detail-user/<%= user._id %>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</a></td>
                             </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Thảo Nguyên</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Má chó</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
-                            <tr>
-                                <td>Sơn béo</td>
-                                <td>beosnguyen</td>
-                                <td>0123456789</td>
-                                <td style="width: 11%;"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</button></td>
-                            </tr>
+
+                            <% } %>
+                            <% } %>  
+                            
                             
                         </tbody>
                     </table>

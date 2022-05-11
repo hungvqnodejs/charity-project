@@ -61,63 +61,31 @@
                               Yêu thương và lòng tốt không bao giờ lãng phí.
                           </em>
                       </p>
-                          
+                      <% if (projects.length > 0) { %>
+                        <% for (let proj of projects) { %>
+                          <% if (Math.ceil((proj.endTime - new Date()) / (1000 * 60 * 60 * 24)) > 0) { %>  
                           <!-- items charity -->
                           <div class="col-12 col-md-4">
                             <div class="card shadow-sm">
-                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                <div style="height: 200px;"><img class="imageproject" src="/<%= proj.image %>" alt=""></div>
                   
                               <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <small>100.000.000 VND / 400.000.000 VND</small>
+                                <p class="card-text"></p>
+                                <p class="card-text title-text"><%= proj.title %></p>
+                                <small>100.000.000 VND / <%= proj.maxMoney %> VND</small>
                                 <small class="progress my-2">
                                   <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                                 </small>
                                 <div class="d-flex justify-content-between align-items-center">     
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Quyên góp</button>
-                                    <small class="text-muted">Còn 30 ngày</small>
+                                    <a href="/detail-project/<%= proj._id %>" class="btn btn-sm btn-outline-secondary">Quyên góp</a>
+                                    <small class="text-muted">Còn <%= Math.ceil((proj.endTime - new Date()) / (1000 * 60 * 60 * 24)) %> ngày</small>
                                 </div>
                               </div>
                             </div>
                           </div>
-
-                          <!-- items charity -->
-                          <div class="col-12 col-md-4">
-                            <div class="card shadow-sm">
-                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                  
-                              <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <small>100.000.000 VND / 400.000.000 VND</small>
-                                <small class="progress my-2">
-                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                </small>
-                                <div class="d-flex justify-content-between align-items-center">     
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Quyên góp</button>
-                                    <small class="text-muted">Còn 30 ngày</small>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- items charity -->
-                          <div class="col-12 col-md-4">
-                            <div class="card shadow-sm">
-                              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                  
-                              <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <small>100.000.000 VND / 400.000.000 VND</small>
-                                <small class="progress my-2">
-                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                </small>
-                                <div class="d-flex justify-content-between align-items-center">     
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Quyên góp</button>
-                                    <small class="text-muted">Còn 30 ngày</small>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <% } %>
+                        <% } %>
+                      <% } %>     
                       </div>
               </div>
           </div>
@@ -179,7 +147,7 @@
                           <!-- an error submitting the form-->
                           <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                           <!-- Submit Button-->
-                          <div class="d-grid"><button class="btn btn-primary btn-xl disabled mb-2" id="submitButton" type="submit" >Submit</button></div>
+                          <div class="d-grid"><button class="btn btn-primary btn-xl disabled mb-2" id="submitButton" type="submit" >Gửi</button></div>
                       </form>
                        
                         <p class="mb-0">

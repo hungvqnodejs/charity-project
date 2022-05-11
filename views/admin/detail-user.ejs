@@ -91,12 +91,12 @@
                         </div>
                         <div class="col-md-7 col-lg-5">
                           <h4 class="mb-3">Thông tin tài khoản</h4>
-                          <form class="needs-validation" novalidate>
+                          <form class="needs-validation" novalidate action="/admin/detail-user/<%= user._id %>" method="POST">
                             <div class="row g-3">
    
                               <div class="col-12">
                                 <label for="username" class="form-label">Tên người dùng </label>
-                                <input type="text" class="form-control" id="username" placeholder="Thảo nguyên">
+                                <input type="text" class="form-control" id="userName" name="userName" value="<%= user.userName %>">
                                 <div class="invalid-feedback">
                                   Hãy nhập tên người dùng
                                 </div>
@@ -104,15 +104,15 @@
 
                               <div class="col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="beosnguyen@gmail.com">
+                                <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>">
                                 <div class="invalid-feedback">
                                   Please enter a valid email address for shipping updates.
                                 </div>
                               </div>
-                  
+                              <input type="hidden" class="form-control" id="password" name="password" value="<%= user.password %>">
                               <div class="col-12">
                                 <label for="numberphone" class="form-label">Số điện thoại</label>
-                                <input type="text" class="form-control" id="numberphone" placeholder="0123456789" required>
+                                <input type="text" class="form-control" id="numberPhone" name="numberPhone" value="<%= user.numberPhone %>" required>
                                 <div class="invalid-feedback">
                                   Please enter your shipping address.
                                 </div>
@@ -120,7 +120,7 @@
                   
                               <div class="col-12">
                                 <label for="address" class="form-label">Địa chỉ</label>
-                                <input type="text" class="form-control" id="address" placeholder="Hà Nội">
+                                <input type="text" class="form-control" id="address" name="address" value="<%= user.address %>">
                               </div>
        
                             <hr class="my-4">
