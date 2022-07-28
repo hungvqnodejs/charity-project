@@ -395,6 +395,14 @@ h6, .h6 {
   font-weight: 300;
 }
 
+.adminColor {
+  color: red;
+  font-weight: 900
+}
+.userColor {
+  font-weight: 900
+}
+
 .display-1 {
   font-size: 6rem;
   font-weight: 300;

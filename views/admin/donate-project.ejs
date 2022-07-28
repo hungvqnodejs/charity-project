@@ -1,0 +1,176 @@
+<%- include('../includes/head.ejs') %>
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom styles for this template-->
+    <link href="/css/admin.css" rel="stylesheet">
+</head>
+
+<body>  
+    <header class="masthead">
+          <!-- Page Wrapper -->
+    <div id="wrapper">
+
+ <%- include('../includes/navigation-admin.ejs') %>
+  
+    <!-- End of Page Wrapper -->
+       
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <br><br>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Quản lý dự án</h1>
+        <br>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Danh sách quyên góp</h6>
+            </div>
+    
+            <div class="card-body">
+              <% if(typeof errorMessageEV != 'undefined') { %>
+                <% errorMessageEV.forEach(function(error) { %>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+                    <%= error.msg %>
+                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div>
+                <% }) %>
+              <% } %>
+                <div class="container">
+                    <div class="row g-5">
+                        <h4 class="d-flex justify-content-between align-items-center mb-1">
+                          <span class="text-primary">Quản lý lượt quyên góp dự án</span>
+                        </h4>
+                        <% if (notify) { %>   
+                          <div class="alert alert-success alert-dismissible fade show " role="alert" >
+                              <%= notify %>
+                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                           </div>
+                        <% } %> 
+                        <div class="col-12">
+                          <div class="table-responsive">
+                            <div class="d-flex justify-content-end "><h5 class="text-success fw-bold">Thành công </h5> &nbsp; <p><%= countDonateSuccess %></p>   &emsp; <h5 class="text-warning fw-bold">Chờ xử lý </h5> &nbsp; <%= countDonateWait %></div>                           
+                            <table class="table" id="dataTable" cellspacing="0">     
+                              <thead>
+                                <tr>
+                                    <th>Ngày</th>
+                                    <th>Tài khoản</th>
+                                    <th>Hình thức</th>
+                                    <th> Số tiền</th>
+                                    <th> Ngân hàng</th>
+                                    <th>Mã giao dịch</th>
+                                    <th> Trạng thái</th>
+                                    <th style="width: 6%;"></th> 
+                                    <th class="pl-0"style="width: 6%;"></th>
+                                </tr>
+                            </thead>         
+                                <tbody>
+                                  <% if (donate) { %>
+                                    <% for (let dona of donate) { %>  
+                                      <tr>
+                                          <td class="align-middle"><%= dona.createdAt.toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }) %></td>
+                                          <td class="align-middle">
+                                            <h6 class="my-0 title-text fw-bold"><%= dona.user.userName %></h6>
+                                            <small class="my-2"><%= dona.user.email %></small>                                          
+                                          </td>
+                                          <td class="align-middle"><%= dona.payments %></td>
+                                          <td class="align-middle"><%= dona.money.toLocaleString('en-US') %></td>
+                                          <td class="align-middle"><%= dona.bank %></td>
+                                          <td class="align-middle"> <%= dona.tradingCode %></td>
+                                          <td class="align-middle">
+                                            <% if ( dona.status === false) { %>
+                                                <small class=" p-1 bg-warning text-white fw-italic fw-bold border border-4">Chờ xử lý ...</small>
+                                            <% } else { %>  
+                                              <small class=" p-1 bg-success text-white fw-bold border border-4">Thành công</small>
+                                            <% } %>  
+                                          </td>
+                                          <td class="align-middle pr-0" style="width: 6%;">  
+                                            <% if ( dona.status === false && dona.payments === 'ATM' ) { %>
+                                              <form action="/admin/list-project/<%= projectId %>" method="POST"> 
+                                                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                  <input type="hidden" name="donateId" value="<%= dona._id %>">
+                                                <button class="btn btn-light " type="submit">
+                                                  <span class="icon text-success">
+                                                      <i class="fa-solid fa-2xl fa-check"></i>
+                                                  </span>
+                                                </button> 
+                                              </form>
+                                              
+                                            <% } %>                                     
+                                          </td>
+                                          <td class="align-middle pl-0" style="width: 6%;">
+                                            <% if ( dona.status === false ) { %>
+                                              <button class="btn bg-white" data-bs-toggle="modal" data-bs-target="#deleteModal<%= dona._id %>"> <span class="icon text-danger ">
+                                                <i class="fa-solid fa-2xl fa-x"></i></span>
+                                              </button> 
+                                                                  <!-- Delete Modal -->
+                                              <form action="/admin/list-project/<%= projectId %>/delete" method="POST">                                   
+                                                <div class="modal fade" id="deleteModal<%= dona._id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteModalLabel">Bạn có chắc chắn muốn xóa ?</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        Việc xóa sẽ mất mất dữ liệu. Bạn đã chắc chắn xóa hãy ấn đồng ý
+                                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                        <input type="hidden" name="donateId" value="<%= dona._id %>"> 
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                        <button type="submit" class="btn btn-primary"  href="/admin/list-project/<%= projectId %>">Đồng ý</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </form> 
+                                            <% } %>
+                                          </td>
+                                      </tr>   
+                                    <% } %>
+                                  <% } %>        
+                                </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    </div>
+<!-- End of Main Content -->
+    </header>
+                                                <!-- Delete Modal -->
+                                        <form action="/admin/list-project/<%= projectId %>/deleteAll" method="POST">                                   
+                                          <div class="modal fade" id="deleteAllModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="deleteModalLabel">Bạn có chắc chắn muốn xóa tất cả ?</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  Xóa tất cả bao gồm các lần quyên góp thành công và chờ xử lý
+                                                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                              
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                                  <button type="submit" class="btn btn-primary"  href="/admin/list-project/<%= projectId %>">Đồng ý</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </form>
+
+
+<%- include('../includes/javascript.ejs') %>
+<%- include('../includes/end.ejs') %>
+

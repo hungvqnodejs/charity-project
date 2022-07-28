@@ -4,25 +4,32 @@ const Schema = mongoose.Schema;
 
 const donateSchema = new Schema(
   {
+    payments: String,
+    tradingCode: String,
+    bank: String,
+    status: Boolean,
     money: {
       type: Number,
       required: true,
     },
     user: {
-      userId: String,
+      userId: {
+        type: Schema.Types.ObjectId,
+        ref: "Project",
+        required: true,
+      },
       userName: String,
+      email: String,
       numberPhone: String,
     },
-    // userId: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "User",
-    //   required: true,
-    // },
-    projectId: {
-      type: Schema.Types.ObjectId,
-      ref: "Project",
-      required: true,
-    },
+    project: {
+      projectId: {
+        type: Schema.Types.ObjectId,
+        ref: "Project",
+        required: true,
+      },
+      title: String
+    }
   },
   { timestamps: true }
 );

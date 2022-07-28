@@ -5,7 +5,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/css/admin.min.css" rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
 </head>
 
@@ -24,6 +24,13 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Quản lý người dùng</h1>
         <br>
+        <% if (message) { %>  
+            <!-- Alert -->
+            <div class="alert <%= styleAlert %> alert-dismissible fade show " role="alert" >
+                <%= message %>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             </div>
+        <% } %>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -36,26 +43,52 @@
                             <tr>
                                 <th>Tên</th>
                                 <th>Tài khoản</th>
-                                <th>Số điện thoại</th>
-                               
+                                <th>Phân quyền</th>
+                                <th>Trạng thái</th>
+                                <th style="width: 11%;"></th>
                                 <th style="width: 11%;"></th>
                             </tr>
                         </thead>
                      
                         <tbody>
-                            <% if (users.length > 0) { %>
-                                <% for (let user of users) { %>   
+                          <% if (users.length > 0) { %>
+                            <% for (let user of users) { %>   
                             <tr>
                                 <td><%= user.userName %></td>
                                 <td><%= user.email %></td>
-                                <td><%= user.numberPhone %></td>
+                                <td><p class="<%= user.decentralization === 'ADMIN' ? 'adminColor' : 'userColor' %>"><%= user.decentralization %></p></td>
+                                <td><% if(user.active == true || user.decentralization === 'ADMIN'){ %> <div class="font-weight-bold"><i class="fas fa-circle text-success"></i> Đang hoạt động</div> <% } else { %> <div class="font-weight-bold"><i class="fas fa-circle text-gray-400"></i> Không hoạt động</div> <% } %></td>
                                 <td style="width: 11%;"><a  href="/admin/detail-user/<%= user._id %>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-lg fa-info-circle"></i> Chi tiết</a></td>
+                                <td class="verticalAlign pl-0" style="width: 9%;">
+                                    <button class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#deleteModal<%= user._id %>"> 
+                                        <span class="icon text-white-60"><i class="far fa-trash-alt"></i></span>
+                                    </button>
+                                    <form action="/admin/list-user" method="POST">                                              
+                                     <!-- Delete Modal -->
+                                     <div class="modal fade" id="deleteModal<%= user._id %>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="deleteModalLabel">Bạn có chắc chắn muốn xóa ?</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              Việc xóa sẽ mất mất dữ liệu. Bạn đã chắc chắn xóa hãy ấn đồng ý
+                                              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                              <input type="hidden" value="<%= user._id %>" id="userDeleteId" name="userDeleteId">
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                              <button type="submit" class="btn btn-primary">Đồng ý</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </form>
+                                </td>
                             </tr>
-
                             <% } %>
-                            <% } %>  
-                            
-                            
+                          <% } %>  
                         </tbody>
                     </table>
                 </div>

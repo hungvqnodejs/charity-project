@@ -3,26 +3,34 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  decentralization: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String
+  },
   userName: {
     type: String,
-    // required: true
+    required: true
   },
   email: {
     type: String,
-    // required: true
+    required: true
   },
   password: {
     type: String,
-    // required: true
+    required: true
   },
   numberPhone: {
     type: String,
-    // required: true
+    required: true
   },
   address: {
     type: String,
     // required: true
-  }
+  },
+  active: Boolean
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -22,6 +22,18 @@ const projectSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    numberBank: {
+      type: String,
+      required: true
+    },
+    nameBank: {
+      type: String,
+      required: true
+    },
+    userBank: {
+      type: String,
+      required: true
+    },
     description: {
       type: String,
       required: true,
@@ -30,17 +42,12 @@ const projectSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    
-    //   userId: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     required: true
-    //   },
-    //   donateId: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Donate',
-    //     required: true
-    //   }
+      donate: {
+        totalDonate: Number,
+        totalMoney: Number,
+        percentageDonate: Number,
+        countDonateWait: Number
+      }
   },
   { timestamps: true }
 );

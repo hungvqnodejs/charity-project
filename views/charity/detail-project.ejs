@@ -1,9 +1,4 @@
 <%- include('../includes/head.ejs') %>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" type="text/css">
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
@@ -12,25 +7,23 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
     </head>
-    <body id="page-top" class="bodyproject">
+    <body id="page-top"  style="background-image: none;">
 <%- include('../includes/navigation.ejs') %>
-<br> <br> <br>
-<section class="projects-section bg-light" style="padding-bottom: 0;">
-  <section class="container px-4 px-lg-5">
+<br> <br>
+<div class="projects-section bg-light" style="padding-bottom: 0;">
+  <section class="px-4 px-lg-5">
       <!-- Featured Project Row-->
       <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-          <div class="= col-lg-7">
+          <div class="= col-lg-6">
               <div class="featured-text  text-lg-left">
                   <h4><%= project.title %></h4>
                   <p class="text-black-50 mb-0"><%= project.description %></p>
               </div>
           </div>
-          <div class=" col-lg-5 imageproject"><div style="margin-left: 7px; " ><img class="img-fluid mb-3 mb-lg-0" src="/<%= project.image %>" alt="..." /></div></div>
+          <div class=" col-lg-6 imageproject"><div style="margin-left: 7px; " ><img class="img-fluid mb-3 mb-lg-0" src="/<%= project.image %>" alt="..." /></div></div>
       </div>
-</section>
-        <section class="bg-light container" >
-         
-              
+  </section>
+  <section class="bg-light container" >   
                 <div class="row g-5">
                   <div class="col-md-7">
 
@@ -45,115 +38,200 @@
                     <div class="tab-content" id="myTabContent">
                       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> 
                         <br>
-                        <p class="blog-post-meta"><%= project.startTime %> </p>
-                
-                        <p><%= project.content %></p>
-                       
-                        <pre><code>Example code block</code></pre></div>
+                        <p class="blog-post-meta blockquote"><%= project.startTime.toDateString() %> </p>
+              
+                        <p><%- project.content %></p>              
+                        <blockquote class="blockquote-footer mt-2">Chúng ta biết rằng còn rất nhiều hoàn cảnh khó khăn trên khắp đất nước của chúng ta cần được bảo trợ. Bạn hay các công ty hãy liên hệ với chúng tôi để cùng tài trợ, giúp đỡ tạo nên một cộng đồng Việt Nam nhân ái nhé! <a href="https://www.facebook.com/hungvq.84">charity@admin</a> </blockquote>
+                      </div>
                       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <br>
                         <h3>Nhà hảo tâm</h3>
                         <p>Danh sách các nhà hảo tâm quyên góp cho dự án</p>
                         <div class="table-responsive">
-                          <table class="table">
+                            <table class="table" id="dataTable" cellspacing="0">     
+                              <thead>
+                                <tr>
+                                    <th>Ngày quyên góp </th>
+                                    <th>Tên </th>
+                                    <th class="align-middle" style="text-align: right">Số tiền</th>
+                                </tr>
+                            </thead> 
                               <tbody>
-                                <% if (users.length > 0) { %>
-                                  <% for (let user of users) { %>                
+                                <% if (donate) { %>
+                                  <% for (let dona of donate) { %>                
                                     <tr>
-                                      <td><h6><%= user.userName %></h6> <small><%= user.numberPhone %></small></td> 
-                                      <td class="align-middle" style="text-align: right"><%= user.money %> VND</td>
+                                      <td><%= dona.createdAt.toLocaleString('en-GB') %></td>
+                                      <td><h6><%= dona.user.userName %></h6> <small><%= dona.user.numberPhone.slice(0, 6) %>****</small></td> 
+                                      <td class="align-middle" style="text-align: right"><%= dona.money.toLocaleString('en-US') %> VND</td>
                                     </tr>
                                   <% } %>  
                                 <% } %>  
                               </tbody> 
-                              
                             </table>
-                        </div></div>
-                    </div>
-            
+                        </div>
+                      </div>
+                    </div>        
                   </div>
-              
                   <div class="col-md-5">
                     <div class="position-sticky" style="top: 2rem;">
                         <div class="card card-body shadow mb-4">
                             <div class="p-4 mb-3 bg-light rounded">
                                 <h4 class="fst-italic my-4">Thông tin quyên góp</h4>
                 
-                                <h6 class="my-2">100.000.000 VND / <%= project.maxMoney %> VND</h6>
+                                <h6 class="my-2"> <%= project.donate.totalMoney.toLocaleString('en-US') %> VND / <%= project.maxMoney.toLocaleString('en-US') %> VND</h6>
                                 <small class="progress">
-                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                  <div class="progress-bar" role="progressbar" style="width: <%= project.donate.percentageDonate %>%" aria-valuenow="<%= project.donate.percentageDonate %>" aria-valuemin="0" aria-valuemax="100"><%= project.donate.percentageDonate %>%</div>
                                 </small>   
                                 <div class="d-flex justify-content-between">
-                                    <small class="my-2">Lượt quyên góp: 300</small>   <small class="my-2">Còn <%= Math.ceil((project.endTime - new Date()) / (1000 * 60 * 60 * 24)) %> ngày</small> 
+                                    <small class="my-2">Lượt quyên góp: <%= project.donate.totalDonate %></small> 
+                                    <% if ( project.donate.percentageDonate < 100) { %>   
+                                     <% if (Math.ceil((project.endTime - new Date()) / (1000 * 60 * 60 * 24)) > 0) { %>   
+                                      <small class="my-2">Còn <%= Math.ceil((project.endTime - new Date()) / (1000 * 60 * 60 * 24)) %> ngày</small> 
+                                     <% } %>
+                                    <% } %> 
                                 </div> 
                                 
                               </div>
                         </div>
-
-                        <div class="card card-body shadow mb-4">
-                            <div class="p-4 mb-3 bg-light rounded">
-                                <h4 class="fst-italic my-4">Hình thức quyên góp</h4>
-                                
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                          <img src="../img/momo.png" alt="momo" style="height: 19px">&nbsp;  MoMo
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body"><img src="../img/momoQR.png" alt="" style="height: 330px;"></div>
+                        <% if ( project.donate.percentageDonate < 100) { %>   
+                          <% if (Math.ceil((project.endTime - new Date()) / (1000 * 60 * 60 * 24)) > 0) { %>   
+                            <div class="card card-body shadow mb-4">
+                              <div class="p-4 mb-3 bg-light rounded">
+                                  <h4 class="fst-italic my-4">Hình thức quyên góp</h4>
+                                  
+                                  <div class="accordion accordion-flush" id="accordionFlushExample">
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            <img src="../img/momo.png" alt="momo" style="height: 21px">&nbsp;  MoMo
+                                          </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                          <div class="accordion-body"><img src="../img/momoQR.png" alt="" style="height: 330px;"></div>
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                            <i class="fa-solid fa-building-columns"></i>&nbsp; ATM
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                          <form class="needs-validation" action="/detail-project" method="POST">
-                                            <div class="row g-3">
-                      
-                      
-                                              <div class="col-12">
-                                                <label for="money" class="form-label">Số tiền quyên góp </label>
-                                                <input type="text" class="form-control clear" id="money" name="money" placeholder="">
-                                                <div class="invalid-feedback">
-                                                  Please enter a valid email address for shipping updates.
-                                                </div>
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            <i class="fas fa-university fa-lg"></i> &nbsp; ATM
+                                          </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                          <div class="accordion-body">
+                                            <% if (countDonateUserWait && countDonateUserWait > 3) { %>
+                                              <div class="alert alert-danger text-center" role="alert">
+                                                Bạn đã thực hiện quá nhiều lần lượt lần quyên góp cùng lúc, chúng tôi sẽ xác nhận thông tin quyên góp của bạn
                                               </div>
-                                              <input type="hidden"  value="<%= project._id %>" name="projId" placeholder="">            
-                                            <button class="w-100 btn btn-primary btn-lg" type="submit">Quyên góp</button>
-                                          </form>
+                                            <% } else if (notify) { %>   
+                                              <div class="alert alert-success text-center" role="alert">
+                                                   <i class="far fa-check-circle"></i>  <strong><%= notify %> </strong>                                                        
+                                              </div>
+                                            <% } else { %> 
+                                              <form class="needs-validation" action="/detail-project" method="POST">
+                                              <div class="row g-3">
+                                                <div class="col-12">
+                                                  <div class="card card-body row mb-2">
+                                                      <div class="col-12 fst-italic mb-1">
+                                                       <h6>  <img src="../img/<% if ( project.nameBank === "Techcombank") { %>tech.png <% } else if ( project.nameBank === "Vietcombank") { %>vietcom.png <% } else { %>vpbank.png <% } %>" alt="" style="height: 25px;">&nbsp; <%= project.nameBank %> </h6>
+                                                      </div>
+                                                      <div class="col-12 row">
+                                                        <div class="col-6"><img src="../img/techQR.jpg" alt="" style="height: 125px;"></div>
+                                                        <div class="col-6">
+                                                          <div class="col-12 mb-1">
+                                                            <small>Số tài khoản</small>
+                                                            <h6 class="fst-italic"><%= project.numberBank %></h6>
+                                                          </div>
+                                                          <div class="col-12 mb-1">
+                                                            <small>Chủ tài khoản</small>
+                                                            <h6 class="fst-italic"><%= project.userBank %></h6>
+                                                          </div>       
+                                                        </div> 
+                                                      </div>
+                                                  </div>
+                                                  <button class="w-100 btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#guideModal">Hướng dẫn quyên góp</button>
+                                                  <div class="card card-body">
+                                                    <label for="money" class="form-label fst-italic"> <strong>Ngân hàng</strong>  </label>
+                                                    <select class="form-select form-select-md mb-2" name="bank" required>
+                                                      <option selected disabled>Chọn ngân hàng chuyển tiền</option>
+                                                      <option value="Techcombank" > Techcombank</option>
+                                                      <option value="Vietcombank">Vietcombank</option>
+                                                      <option value="Agribank">Agribank</option>
+                                                      <option value="VPBank  ">VPBank </option>
+                                                      <option value="Sacombank ">Sacombank </option>
+                                                      <option value="MB Bank ">MBbank </option>
+                                                    </select>  
+                                                    <label for="money" class="form-label fst-italic"> <strong>Số tiền quyên góp</strong>  </label>
+                                                    <input type="text" class="form-control" id="money" name="money" required>
+                                                    <label for="tradingCode" class="form-label fst-italic mt-2"> <strong>Mã giao dịch/ tham chiếu </strong>  </label>
+                                                    <input type="text" class="form-control" id="tradingCode" name="tradingCode" required>
+                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                    <input type="hidden"  value="<%= project._id %>" name="projId">            
+                                                    <button class="btn btn-primary mt-2" type="submit">Quyên góp</button>
+                                                  </div>
+                                                  
+                                                  </div>
+                                                  
+                                              </form>
+                                            <% } %> 
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                            <i class="fab fa-cc-paypal fa-lg"></i> &nbsp; Paypal
+                                          </button>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                          <div class="accordion-body">
+                                            <form class="needs-validation" action="/pay" method="POST">
+                                              <label for="money" class="form-label fst-italic"> <strong>Số tiền quyên góp</strong>  </label>
+                                              <input type="text" class="form-control"  name="money" required>
+                                              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                              <input type="hidden"  value="<%= project._id %>" name="projId">        
+                                              <button class="btn mt-2 w-100 btnPaypal" type="submit"><img src='/images/btn_paypal.png' alt='Pay with PayPal | Small' /></button>
+                                            </form>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                            <i class="fa-brands fa-cc-paypal"></i> &nbsp; Paypal
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                        </div>
-                      
+                                </div>
+                            </div>
+                          <% } %>
+                        <% } %>
                     </div>
                   </div>
                 </div>
               <br>
-        </section>
-        <!-- Footer-->
+  </section>        
+</div>
+
+
       <br>
+      <!-- Footer-->
       <footer class="footer text-faded text-center py-4">
         <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2022</p></div>
     </footer>
+    
+<!-- Modal -->
+<div class="modal fade" id="guideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted text-center">Hướng dẫn quyên góp qua ATM</h6>
+            <div class="d-flex justify-content-between">  
+              <p><span class="badge bg-secondary">1</span> Anh/chị chuyển khoản tiền quyên góp theo số tài khoản trên</p></div>
+              <p><span class="badge bg-secondary">2</span> Sau khi chuyển tiền thành công, anh/chị hãy đăng nhập tài khoản (nếu chưa có tài khoản hãy đăng ký ) vào mục quyên góp của dự án</p>
+              <p><span class="badge bg-secondary">3</span> Anh/chị nhập hãy chọn ngân hàng, nhập số tiền đã chuyển cùng mã giao dịch do ngân hàng cung cấp sau đó ấn Quyên góp</p>
+              <p><span class="badge bg-secondary">4</span> Chúng tôi sẽ đôi chiếu số tiền cùng mã giao dịch và sẽ gửi thông báo cho Anh/chị nếu nhận thành công</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->
@@ -163,4 +241,5 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<%- include('../includes/javascript.ejs') %>
 <%- include('../includes/end.ejs') %>

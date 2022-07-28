@@ -1,9 +1,4 @@
 <%- include('../includes/head.ejs') %>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" type="text/css">
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
@@ -16,114 +11,93 @@
 <!-- Navigation-->
 <%- include('../includes/navigation.ejs') %>
 
-<br>
-        <section class="bg-light container" >
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <div class="container">
-                        <main>                     
-                          <div class="row g-5">
-                            <div class="col-md-5 col-lg-7 order-md-last">
-                              <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
-                                <span >Lịch sử quyên góp</span>
-                              </h4>
-                                  <div class="table-responsive">
-                                    <table class="table" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Chương trình</th>
-                                                <th>Ngày </th>
-                                                <th>Số tiền</th>
-                                                <th>Hình thức </th>
-                                        
-                                            </tr>
-                                        </thead>
-                                     
-                                        <tbody>  
-                                            <tr>
-                                                <td><h6 class="my-0">Trái tim cho em</h6>
-                                                    <small class="text-muted">Đang diễn ra</small></td>
-                                                <td>14/4/2022</td>
-                                                <td>$1210</td>
-                                                <td class="verticalAlign">MoMo
-                                                   </td>
-                                            </tr>
-    
-                                            <tr>
-                                                <td><h6 class="my-0">Ủng hộ người nghèo</h6>
-                                                    <small class="text-muted">Đã kết thúc</small></td>
-                                                <td>13/4/2022</td>
-                                                <td>$120.000</td>
-                                                <td class="verticalAlign">ATM
-                                                </td>
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                              </ul>
-                      
-                              
-                            </div>
-                            <div class="col-md-7 col-lg-5">
-                              <h4 class="mb-3 mt-3">Thông tin tài khoản</h4>
-                              <form class="needs-validation" novalidate>
-                                <div class="row g-3">
-       
-                                  <div class="col-12">
-                                    <label for="username" class="form-label">Tên người dùng </label>
-                                    <input type="text" class="form-control" id="username" placeholder="Thảo nguyên" disabled>
-                                    <div class="invalid-feedback">
-                                      Hãy nhập tên người dùng
-                                    </div>
-                                  </div>
-    
-                                  <div class="col-12">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="beosnguyen@gmail.com" disabled>
-                                    <div class="invalid-feedback">
-                                      Please enter a valid email address for shipping updates.
-                                    </div>
-                                  </div>
+<br><br><br><br>
 
-                                  <div class="col-12">
-                                    <label for="password" class="form-label">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password">
-                                    <div class="invalid-feedback">
-                                      Please enter a valid password for shipping updates.
-                                    </div>
-                                  </div>
-                                  <div>
-                                    <a type="button" class="small" id="btnrs">Thay đổi mất khẩu</a>
-                                </div>
-                      
-                                  <div class="col-12">
-                                    <label for="numberphone" class="form-label">Số điện thoại</label>
-                                    <input type="text" class="form-control" id="numberphone" placeholder="0123456789" disabled>
-                                    <div class="invalid-feedback">
-                                      Please enter your shipping address.
-                                    </div>
-                                  </div>
-                      
-                                  <div class="col-12">
-                                    <label for="address" class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Hà Nội" disabled>
-                                  </div>
-        
-                              </form>
-                            </div>
-                          </div>
-                        </main>
-                    
-                      </div>
+        <section class="container" >
+          <form class="needs-validation" novalidate action="/detail-user" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-12 col-lg-3 mb-2">
+                <div class="list-group" id="list-tab" role="tablist">
+                  <a class="list-group-item list-group-item-action active" >Thông tin cá nhân</a>
+                  <a class="list-group-item list-group-item-action" href="/detail-user/new-password" >Thay đổi mật khẩu</a>
+                  <a class="list-group-item list-group-item-action" href="/detail-user/donate" >Lịch sử quyên góp</a>
                 </div>
-            </div>        
+              </div>
+          
+              <div class="col-12 col-lg-6">
+                <div class="card mb-3">
+                  <div class="card-header">Thông tin tài khoản</div>
+                <div class=" card-body " style="padding: 30px">
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" >
+                      <% if (notify) { %>   
+                        <div class="alert alert-success alert-dismissible fade show " role="alert" >
+                            <%= notify %>
+                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         </div>
+                    <% } %> 
+
+                    <% if(typeof errorMessageEV != 'undefined') { %>
+                        <% errorMessageEV.forEach(function(error) { %>
+                          <div class="alert alert-danger alert-dismissible fade show " role="alert" >
+                            <%= error.msg %>
+                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         </div>
+                        <% }) %>
+                      <% } %>
+                      
+                          <div class=" mb-1">
+                            <label for="username" class="form-label">Tên người dùng </label>
+                            <input type="text" class="form-control" id="userName" name="userName" value="<%= user.userName %>" disabled>
+                          </div>
+              
+                          <div class=" mb-1">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" disabled>
+                          </div>
+                        
+                        <div class=" mb-1">
+                          <label for="numberPhone" class="form-label">Số điện thoại</label>
+                          <input type="text" class="form-control" id="numberPhone" name="numberPhone" value="<%= user.numberPhone %>" >
+                        </div>
+            
+                        <div class=" mb-3">
+                          <label for="address" class="form-label">Địa chỉ</label>
+                          <input type="text" class="form-control" id="address" name="address" value="<%= user.address %>" >
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                       
+                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                       
+                    </div> 
+                  </div>
+                </div>
+                </div>   
+              </div>
+              <div class="col-12 col-lg-3 order-2">
+                <div class="card">
+                  <div class="card-header"> Ảnh đại diện</div>
+                  <div class="card-body text-center">
+                    <img src="<%= user.image %>" width="200" height="200" class="img-account-profile rounded-circle mb-2" alt="">
+                    <div class="mb-3">
+                      <label for="image" class="form-label">Chọn ảnh đại diện</label>
+                      <input class="form-control form-control-sm" type="file" id="image" name="image" value="<%= user.image %>" >
+                      <div class="invalid-feedback ml-4  <%= errorMessage === true ? 'd-block' : '' %>">
+                        Đây không phải hình ảnh
+                      </div>   
+                    </div>
+                  </div>
+                </div>   
+              </div>
+            </form> 
+            </div>         
+                                  
         </section>
+        <br>
           <!-- Footer-->
-      
       <footer class="footer text-faded text-center py-4">
         <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2022</p></div>
-    </footer>
+      </footer>
         <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->

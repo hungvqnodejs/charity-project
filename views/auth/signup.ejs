@@ -1,0 +1,113 @@
+<%- include('../includes/head.ejs') %>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/login.css">
+        <link href="/css/admin.min.css" rel="stylesheet">
+</head>
+<%- include('../includes/navigation.ejs') %>   
+<body>  
+    <br><br><br>
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-7 col-lg-7 col-md-12 fadeInDown">
+                <div class="card o-hidden border-0 shadow-lg my-5 ">
+                    <div class="card-body p-0">
+                        
+                        <!-- Nested Row within Card Body -->                                             
+                                <div class="p-4">
+                                  <% if (notify) { %>   
+                                        <div class="alert alert-success mb-0" role="alert">
+                                            <h5 class="bg-success p-2 text-white">ĐĂNG KÝ TÀI KHOẢN THÀNH CÔNG</h5>
+                                           
+                                            <p>Mật khẩu sẽ được gửi vào Email <strong><%= notify %></strong>, hãy kiểm tra hộp thư </p>
+                                            <a href="/">&larr; Quay lại trang chủ</a>
+                                        </div>
+                                  <% } else { %> 
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">ĐĂNG KÝ TÀI KHOẢN</h1>
+                                    </div>       
+                                    <!-- <% if(typeof errorMessageEV != 'undefined') { %>
+                                        <% errorMessageEV.forEach(function(error) { %>
+                                          <div class="alert alert-danger alert-dismissible fade show " role="alert" >
+                                            <%= error.msg %>
+                                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                         </div>
+                                        <% }) %>
+                                    <% } %>     -->
+                                    <!-- <% if (errorMessage) { %>           
+                                        <div class="alert alert-danger alert-dismissible fade show " role="alert" >
+                                            <%= errorMessage %> 
+                                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                         </div>
+                                    <% } %>                           -->
+                                    <form class="login-form user fadeIn fourth" action="/signup" method="POST">
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-user inputleft <%= errorMessageEV.find(e => e.param === 'userName') ? 'is-invalid' : '' %>"  id="userName" name="userName"
+                                                    placeholder="Họ và tên" value="<%= oldInput.userName %>">
+                                                <div class="invalid-feedback ml-4 <%= errorMessageEV.find(e => e.param === 'userName') ? 'd-block' : '' %>">
+                                                    Tên phải từ 3 ký tử trở lên
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control form-control-user inputleft <%= errorMessageEV.find(e => e.param === 'numberPhone') ? 'is-invalid' : '' %>" id="numberPhone" name="numberPhone"
+                                                    placeholder="Số điện thoại" value="<%= oldInput.numberPhone %>">
+                                                <div class="invalid-feedback ml-4 <%= errorMessageEV.find(e => e.param === 'numberPhone') ? 'd-block' : '' %>">
+                                                     Số điện thoại không đúng
+                                                </div>   
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user inputleft <%= errorMessageEV.find(e => e.param === 'email') || errorMessage ? 'is-invalid' : '' %> " name="email"  id="email" placeholder="Email" value="<%= oldInput.email %>">
+                                            <div class="invalid-feedback ml-4 <%= errorMessageEV.find(e => e.param === 'email') || errorMessage ? 'd-block' : '' %>">
+                                               <%= errorMessage ? 'Email đã tồn tại' : ' Email không hợp lệ ' %>
+                                            </div>
+                                            
+                                        </div>
+                                        <input type="hidden" name="decentralization" value="USER">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Đăng ký
+                                        </button>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-12 my-1">
+                                                <a href="/signup" class="btn btn-google btn-user btn-block ">
+                                                    <i class="fab fa-google fa-fw"></i> Đăng ký với Google
+                                                </a>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 my-1">
+                                                <a href="/signup" class="btn btn-facebook btn-user btn-block">
+                                                    <i class="fab fa-facebook-f fa-fw"></i> Đăng ký với Facebook
+                                                </a>
+                                            </div>
+                                    
+                                        </div>                                    
+                                    </form>
+                                    <hr class="fadeIn">
+                                    <div class="text-center fadeIn fourth">
+                                        <a class="small fadeIn fourth" href="/reset">Quên mật khẩu</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small fadeIn fourth" href="/login">Đăng nhập nếu bạn có tài khoản </a> 
+                                    </div>
+                                  <% } %> 
+                                </div>                
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<%- include('../includes/end.ejs') %>
+

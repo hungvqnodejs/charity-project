@@ -1,8 +1,4 @@
 <%- include('../includes/head.ejs') %>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
@@ -50,6 +46,9 @@
               </div>
           </div>
       </section>
+
+      <!-- Dự án đang diễn ra -->
+
       <section class="page-section cta " id="project">
           <div class="container">
               <div class="row">          
@@ -63,18 +62,18 @@
                       </p>
                       <% if (projects.length > 0) { %>
                         <% for (let proj of projects) { %>
-                          <% if (Math.ceil((proj.endTime - new Date()) / (1000 * 60 * 60 * 24)) > 0) { %>  
+                         <% if (proj.donate.percentageDonate < 100) { %> 
+                          <% if (Math.ceil((proj.endTime - new Date()) / (1000 * 60 * 60 * 24)) > 0 ) { %>  
                           <!-- items charity -->
                           <div class="col-12 col-md-4">
-                            <div class="card shadow-sm">
+                            <div class="card shadow-sm mb-4">
                                 <div style="height: 200px;"><img class="imageproject" src="/<%= proj.image %>" alt=""></div>
                   
                               <div class="card-body">
-                                <p class="card-text"></p>
                                 <p class="card-text title-text"><%= proj.title %></p>
-                                <small>100.000.000 VND / <%= proj.maxMoney %> VND</small>
+                                <small><%= proj.donate.totalMoney.toLocaleString('en-US') %> VND / <%= proj.maxMoney.toLocaleString('en-US') %> VND</small>
                                 <small class="progress my-2">
-                                  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                  <div class="progress-bar" role="progressbar" style="width: <%= proj.donate.percentageDonate %>%" aria-valuenow="<%= proj.donate.percentageDonate %>" aria-valuemin="0" aria-valuemax="100"><%= proj.donate.percentageDonate %>%</div>
                                 </small>
                                 <div class="d-flex justify-content-between align-items-center">     
                                     <a href="/detail-project/<%= proj._id %>" class="btn btn-sm btn-outline-secondary">Quyên góp</a>
@@ -84,13 +83,53 @@
                             </div>
                           </div>
                           <% } %>
+                         <% } %>
                         <% } %>
-                      <% } %>     
-                      </div>
-              </div>
+                      <% } %>   
+                      <!-- <div class="btn btn-lg btn-outline-secondary" id="load-more"> Xem thêm</div>   -->
+                      </div>          
+              </div>    
           </div>
       </section>
 
+      <!-- Dự án đang diễn ra -->
+
+      <section class="page-section cta ">
+        <div class="container">
+            <div class="row">          
+                    <div class="cta-inner bg-faded text-center rounded row">
+                      <p class="address mb-5">
+                        <em>
+                            <strong class="site-heading-lower">Các dự án quyên góp chúng tôi đã thực hiện</strong>
+                            <br />
+                        </em>
+                    </p>
+                    <% if (projects.length > 0) { %>
+                      <% for (let proj of projects) { %>
+                        <% if (Math.ceil((proj.endTime - new Date()) / (1000 * 60 * 60 * 24)) <= 0 || proj.donate.percentageDonate >= 100) { %>  
+                        <!-- items charity -->
+                        <div class="col-12 col-md-4">
+                          <div class="card shadow-sm mb-3 ">
+                              <div style="height: 200px;"><img class="imageproject" src="/<%= proj.image %>" alt=""></div>
+                
+                            <div class="card-body">
+                              <p class="card-text title-text"><%= proj.title %></p>
+
+                              <div class="d-flex justify-content-between align-items-center">     
+                                  <a href="/detail-project/<%= proj._id %>" class="btn btn-sm btn-outline-secondary">Xem chi tiết</a>
+                                  <small class="text-muted">Đã hoàn thành </small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <% } %>
+                      <% } %>
+                    <% } %>     
+                    </div>
+            </div>
+        </div>
+    </section>
+    
       <!-- contact -->
       <section class="page-section" id="contact">
         <div class="container ">
@@ -98,37 +137,40 @@
                 <div class="col-xl-9 mx-auto opacity-10 cta pt-3 pb-3">
                     <div class="cta-inner bg-faded text-center rounded">
                         
-                          <p class="address mb-5">
+                          <p class="address mb-4">
                             <em>
                                 <strong class="site-heading-lower">Liên hệ với chúng tôi</strong>
                                 <br />
                                 Mọi ý kiến đóng góp và giúp đỡ xin được gửi qua đây. Chúng tôi sẽ sớm phản hồi lại !
                             </em>
                         </p>
-                       
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <% if (notify) { %>   
+                            <blockquote  class="blockquote-footer ">
+                                <%= notify %>
+                            </blockquote>
+                        <% } else { %> 
+                        <form id="contactForm mt-2" data-sb-form-api-token="API_TOKEN" action="/" method="POST">
                           <!-- Name input-->
                           <div class="form-floating mb-3">
-                              <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                              <label for="name">Tên</label>
-                              <div class="invalid-feedback" data-sb-feedback="name:required">Hãy điền tên của bạn.</div>
+                              <input class="form-control" id="userName" name="userName" type="text" value=" <% if (user !== null) { %> <%= user.userName %> <% } %>" data-sb-validations="required" required/>
+                              <label for="userName">Tên</label>
+                              <div class="invalid-feedback" data-sb-feedback="userName:required">Hãy điền tên của bạn.</div>
                           </div>
                           <!-- Email address input-->
                           <div class="form-floating mb-3">
-                              <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                              <input class="form-control" id="email" type="email" name="email" value=" <% if (user !== null) { %> <%= user.email %> <% } %>" data-sb-validations="required,email" required />
                               <label for="email">Email</label>
                               <div class="invalid-feedback" data-sb-feedback="email:required">Hãy điền địa chỉ email.</div>
-                              <div class="invalid-feedback" data-sb-feedback="email:email">Địa chỉ email không đúng.</div>
                           </div>
                           <!-- Phone number input-->
                           <div class="form-floating mb-3">
-                              <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                              <label for="phone">Số điện thoại</label>
-                              <div class="invalid-feedback" data-sb-feedback="phone:required">Hãy nhập số điện thoại của bạn.</div>
+                              <input class="form-control" id="numberPhone" name="numberPhone" type="tel" value=" <% if (user !== null) { %> <%= user.numberPhone %> <% } %>" data-sb-validations="required" required/>
+                              <label for="numberPhone">Số điện thoại</label>
+                              <div class="invalid-feedback" data-sb-feedback="numberPhone:required">Hãy nhập số điện thoại của bạn.</div>
                           </div>
                           <!-- Message input-->
                           <div class="form-floating mb-3">
-                              <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                              <textarea class="form-control" id="message" name="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required" required></textarea>
                               <label for="message">Lời nhắn</label>
                               <div class="invalid-feedback" data-sb-feedback="message:required">Gửi lời nhắn đến chúng tôi.</div>
                           </div>
@@ -136,20 +178,21 @@
                           <!---->
                           <!-- This is what your users will see when the form-->
                           <!-- has successfully submitted-->
-                          <div class="d-none" id="submitSuccessMessage">
+                          <!-- <div class="d-none" id="submitSuccessMessage">
                               <div class="text-center mb-3">
-                                  <div class="fw-bolder">Form submission successful!</div>         
+                                  <div class="fw-bolder">Gửi tin nhắn thành công</div>         
                               </div>
-                          </div>
+                          </div> -->
                           <!-- Submit error message-->
                           <!---->
                           <!-- This is what your users will see when there is-->
                           <!-- an error submitting the form-->
+                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                           <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                           <!-- Submit Button-->
-                          <div class="d-grid"><button class="btn btn-primary btn-xl disabled mb-2" id="submitButton" type="submit" >Gửi</button></div>
-                      </form>
-                       
+                          <div class="d-grid"><button class="btn btn-primary btn-xl mb-2" type="submit" >Gửi</button></div>
+                        </form>
+                        <% } %> 
                         <p class="mb-0">
                             <small><em>Gọi cho chúng tôi</em></small>
                             <br />
@@ -175,4 +218,22 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <script>
+
+            let loadMoreBtn = document.querySelector('#load-more');
+            let currentItem = 3;
+            
+            loadMoreBtn.onclick = () =>{
+               let boxes = [...document.querySelectorAll('.container .card .card-body')];
+               for (var i = currentItem; i < currentItem + 3; i++){
+                  boxes[i].style.display = 'inline-block';
+               }
+               currentItem += 3;
+            
+               if(currentItem >= boxes.length){
+                  loadMoreBtn.style.display = 'none';
+               }
+            } 
+        </script>
 <%- include('../includes/end.ejs') %>

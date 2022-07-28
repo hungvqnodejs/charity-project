@@ -1,0 +1,76 @@
+<%- include('../includes/head.ejs') %>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top" class="bodyproject">
+<!-- Navigation-->
+<%- include('../includes/navigation.ejs') %>
+
+<br><br><br><br>
+
+        <section class="container">
+                      <div class="row">
+                        <div class="col-12 col-lg-3">
+                          <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action "  href="/detail-user" >Thông tin cá nhân</a>
+                            <a class="list-group-item list-group-item-action" href="/detail-user/new-password" >Thay đổi mật khẩu</a>
+                            <a class="list-group-item list-group-item-action active" >Lịch sử quyên góp</a>
+                          </div>
+                        </div>
+                        <div class="col-12 card shadow mb-4 vh-100 col-lg-9">
+                        
+                            <div class="card-body">
+                              <div class="tab-content active" id="nav-tabContent">
+                                
+                                  <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                                    <span >Lịch sử quyên góp</span>
+                                  </h4>
+                                      <div class="table-responsive">
+                                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ngày </th>
+                                                    <th>Chương trình</th>
+                                                    <th>Số tiền</th>
+                                                    <th>Hình thức </th>
+                                                </tr>
+                                            </thead>                                  
+                                            <tbody>          
+                                                  <% if (donate.length > 0) { %>
+                                                    <% for (let dont of donate) { %>  
+                                                     <tr>
+                                                      <td><%= dont.createdAt.toLocaleDateString('pt-PT')  %></td>
+                                                      <td style="width: 50%;"><h6 class="my-0 title-text"><%= dont.project.title %></h6></td>                                        
+                                                      <td><%= dont.money %> VND</td>
+                                                      <td ><%= dont.payments %></td>
+                                                     </tr>  
+                                                    <% } %>
+                                                  <%  } %>                                               
+                                            </tbody>
+                                        </table>
+                                      </div>
+                              </div>
+                            </div> 
+                        </div>
+                      </div>                             
+        </section>
+          <!-- Footer-->
+      <footer class="footer text-faded text-center py-4">
+        <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2022</p></div>
+    </footer>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<%- include('../includes/javascript.ejs') %>
+<%- include('../includes/end.ejs') %>
